@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>GYANU AI — CBSE Class 9 Science Master Hub (Flashcards & Quiz) | By Rishi Sir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #312e81;
+      --violet: #7c3aed;
+      --teal: #0d9488;
+      --teal-light: #14b8a6;
+      --amber: #f59e0b;
+      --amber-dark: #d97706;
+      --wa-green: #25D366;
+      --wa-dark: #16a34a;
+      --bg-main: #f1f5f9;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #cbd5e1;
+      --header-grad: linear-gradient(135deg, #312e81 0%, #4f46e5 48%, #0d9488 100%);
+      --fc-grad: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      --quiz-grad: linear-gradient(135deg, #0d9488 0%, #059669 100%);
+      --shadow-md: 0 10px 28px rgba(15, 23, 42, 0.09);
+      --shadow-lg: 0 18px 42px rgba(79, 70, 229, 0.18);
+    }
+
+    body.dark-mode {
+      --bg-main: #090d16;
+      --card-bg: #131c31;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #2a3754;
+      --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 18px 42px rgba(0, 0, 0, 0.65);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.62;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      padding-bottom: 44px;
+    }
+
+    .app-container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 14px;
+    }
+
+    /* ================= HERO HEADER ================= */
+    .top-header {
+      background: var(--header-grad);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .owl-logo {
+      width: 68px;
+      height: 68px;
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.28);
+      border: 3px solid #5eead4;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .owl-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .brand-titles h1 {
+      font-size: 1.52rem;
+      font-weight: 800;
+      line-height: 1.25;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.22);
+    }
+
+    .brand-titles p {
+      font-size: 0.9rem;
+      opacity: 0.95;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    .creator-pill {
+      display: inline-block;
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(6px);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 8px;
+      border: 1px solid rgba(255,255,255,0.42);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 9px 14px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.34);
+      transform: translateY(-1px);
+    }
+
+    /* ================= WELCOME BAR ================= */
+    .welcome-bar {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 16px 22px;
+      margin-top: 16px;
+      box-shadow: var(--shadow-md);
+      border: 1.5px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .welcome-left h2 {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    body.dark-mode .welcome-left h2 { color: #a5b4fc; }
+
+    .welcome-left p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    .name-chip {
+      background: #eef2ff;
+      color: #3730a3;
+      border: 1.5px solid #a5b4fc;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    body.dark-mode .name-chip {
+      background: rgba(79,70,229,0.22);
+      color: #c7d2fe;
+      border-color: #6366f1;
+    }
+
+    /* ================= 2 MAJOR MODULE CARDS ================= */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 720px) {
+      .modules-grid { grid-template-columns: 1fr; }
+    }
+
+    .module-card {
+      background: var(--card-bg);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .module-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .mod-banner {
+      padding: 22px 22px 18px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .mod-banner.fc { background: var(--fc-grad); }
+    .mod-banner.quiz { background: var(--quiz-grad); }
+
+    .mod-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(6px);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .mod-badges {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .mod-pill {
+      background: rgba(0,0,0,0.24);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .mod-body {
+      padding: 20px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mod-title {
+      font-size: 1.28rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .mod-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .mod-highlights {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    .mod-highlights li {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .mod-footer {
+      padding: 0 22px 22px;
+    }
+
+    .launch-btn {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .launch-btn.fc-btn { background: var(--fc-grad); }
+    .launch-btn.quiz-btn { background: var(--quiz-grad); }
+    .launch-btn:hover { transform: translateY(-2px); opacity: 0.96; }
+
+    /* ================= 15-MIN TOPPER FORMULA ================= */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 22px;
+      padding: 22px;
+      margin-top: 22px;
+      box-shadow: var(--shadow-md);
+      border: 1.5px solid var(--border-color);
+    }
+
+    .sec-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .sec-heading h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    body.dark-mode .sec-heading h2 { color: #a5b4fc; }
+
+    .sec-sub {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .formula-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .formula-steps { grid-template-columns: 1fr; }
+    }
+
+    .step-box {
+      background: var(--bg-main);
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: 16px;
+      position: relative;
+    }
+
+    .step-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .step-box.s2 .step-badge { background: var(--teal); }
+    .step-box.s3 .step-badge { background: var(--amber-dark); }
+
+    .step-box h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .step-box p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ================= HINDI GUIDE TABS ================= */
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 780px) {
+      .guide-grid { grid-template-columns: 1fr; }
+    }
+
+    .guide-col {
+      background: var(--bg-main);
+      border: 1.5px solid var(--border-color);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .guide-col-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      border-bottom: 2px dashed var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .guide-col.fc-guide .guide-col-title { color: #4f46e5; }
+    .guide-col.quiz-guide .guide-col-title { color: #0d9488; }
+    body.dark-mode .guide-col.fc-guide .guide-col-title { color: #a5b4fc; }
+    body.dark-mode .guide-col.quiz-guide .guide-col-title { color: #5eead4; }
+
+    .guide-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 11px;
+      font-size: 0.86rem;
+    }
+
+    .guide-item:last-child { margin-bottom: 0; }
+
+    .g-icon {
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .guide-item strong {
+      color: var(--text-main);
+      font-weight: 800;
+    }
+
+    .guide-item span {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ================= 13 CHAPTERS SYLLABUS ACCORDION ================= */
+    .syllabus-toggle-btn {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(79,70,229,0.1), rgba(13,148,136,0.12));
+      border: 2px solid var(--primary);
+      color: var(--text-main);
+      padding: 13px 18px;
+      border-radius: 14px;
+      font-size: 0.94rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .syllabus-content {
+      display: none;
+      margin-top: 14px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .syllabus-content.open { display: grid; }
+
+    @media (max-width: 680px) {
+      .syllabus-content { grid-template-columns: 1fr; }
+    }
+
+    .branch-box {
+      background: var(--bg-main);
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 13px 15px;
+    }
+
+    .branch-box h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 7px;
+    }
+    body.dark-mode .branch-box h4 { color: #5eead4; }
+
+    .branch-box ul {
+      padding-left: 18px;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .branch-box ul li { margin-bottom: 4px; }
+
+    /* ================= FEEDBACK & MOTIVATION SECTION ================= */
+    .feedback-card {
+      margin-top: 22px;
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #0f766e 100%);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 26px 24px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      border: 2px solid #5eead4;
+    }
+
+    .feedback-card h2 {
+      font-size: 1.42rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .feedback-card p {
+      font-size: 0.92rem;
+      opacity: 0.95;
+      max-width: 760px;
+      margin: 0 auto 18px;
+      font-weight: 500;
+    }
+
+    .wa-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 720px) {
+      .wa-grid { grid-template-columns: 1fr; }
+    }
+
+    .wa-action-btn {
+      background: #25D366;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 13px 14px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.24);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .wa-action-btn span.sub {
+      font-size: 0.74rem;
+      font-weight: 600;
+      opacity: 0.92;
+    }
+
+    .wa-action-btn.alt1 { background: #f59e0b; }
+    .wa-action-btn.alt2 { background: #0ea5e9; }
+    .wa-action-btn:hover { transform: translateY(-2px); }
+
+    .direct-phone {
+      margin-top: 16px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #fde047;
+    }
+
+    /* ================= FOOTER ================= */
+    .footer-note {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <!-- ================= HERO HEADER ================= -->
+  <header class="top-header">
+    <div class="brand-left">
+      <div class="owl-logo" title="Gyanu AI By Rishi Sir">
+        <img src="channels4_profile (1).jpg" alt="Gyanu AI" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22><rect width=%22120%22 height=%22120%22 rx=%2260%22 fill=%22%23312e81%22/><text x=%2260%22 y=%2260%22 font-family=%22Arial%22 font-weight=%22bold%22 font-size=%2217%22 fill=%22%235eead4%22 text-anchor=%22middle%22>Gyanu AI</text><text x=%2260%22 y=%2280%22 font-family=%22Arial%22 font-weight=%22bold%22 font-size=%2211%22 fill=%22%23ffffff%22 text-anchor=%22middle%22>By Rishi Sir</text></svg>';" />
+      </div>
+      <div class="brand-titles">
+        <h1>🦉 GYANU AI — CBSE Class 9 Science Hub</h1>
+        <p>Exploration पाठ्यपुस्तक के सभी 13 अध्याय • 100% Free Digital Study Platform</p>
+        <span class="creator-pill">✨ क्या आप जानते हैं यह आपके लिए किसने तैयार किया है? — हाँ, आपके ऋषि सर!</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="action-btn" id="themeBtn" onclick="toggleDarkMode()">🌙 नाइट मोड</button>
+      <a href="https://wa.me/919251477188?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%20%E0%A4%8B%E0%A4%B7%E0%A4%BF%20%E0%A4%B8%E0%A4%B0%2C%20%E0%A4%AE%E0%A5%88%E0%A4%82%20CBSE%20Class%209%20Science%20Hub%20%E0%A4%AA%E0%A4%B0%20%E0%A4%AA%E0%A5%9D%E0%A4%BC%E0%A4%BE%E0%A4%88%20%E0%A4%95%E0%A4%B0%20%E0%A4%B0%E0%A4%B9%E0%A4%BE%20%E0%A4%B9%E0%A5%82%E0%A4%81!" target="_blank" rel="noopener noreferrer" class="action-btn">💬 WhatsApp: 9251477188</a>
+    </div>
+  </header>
+
+  <!-- ================= WELCOME BAR ================= -->
+  <section class="welcome-bar">
+    <div class="welcome-left">
+      <h2 id="welcomeHeading">स्वागत है, छात्रो! — स्मार्ट तरीके से विज्ञान सीखें और परीक्षा में टॉप करें</h2>
+      <p>नीचे दिए गए दोनों मॉड्यूल (Flashcards और Quiz) नए टैब में खुलेंगे, जिससे यह होम पेज हमेशा आपके पास खुला रहेगा।</p>
+    </div>
+    <button class="name-chip" onclick="setStudentName()">
+      <span>👤</span>
+      <span id="nameBtnText">अपना नाम सेट करें</span>
+    </button>
+  </section>
+
+  <!-- ================= 2 MAJOR MODULE CARDS ================= -->
+  <main class="modules-grid">
+    <!-- Card 1: Flashcards -->
+    <article class="module-card">
+      <div class="mod-banner fc">
+        <div class="mod-icon">🃏</div>
+        <div class="mod-badges">
+          <span class="mod-pill">668 Smart Cards</span>
+          <span class="mod-pill">पढ़ें और याद करें</span>
+        </div>
+      </div>
+      <div class="mod-body">
+        <div class="mod-title">Smart 3D Flashcards Studio</div>
+        <div class="mod-desc">सभी 13 अध्यायों के 668 इंटरैक्टिव 3D फ्लैश कार्ड्स। रटने के बजाय Active Recall, वॉइस उच्चारण, हिंट (Clue) और Shuffle के साथ तेज़ रिवीजन करें।</div>
+        <ul class="mod-highlights">
+          <li>🔀 Shuffle Cards</li>
+          <li>💡 Clue & 🔊 Listen</li>
+          <li>🔴🟡🟢 Spaced Repetition</li>
+          <li>📐 Formula & Blanks Filter</li>
+        </ul>
+      </div>
+      <div class="mod-footer">
+        <a href="https://9thsfcards.vercel.app" target="_blank" rel="noopener noreferrer" class="launch-btn fc-btn">
+          <span>🃏 3D फ्लैश कार्ड्स खोलें (New Tab) ➔</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Card 2: Quiz Arena -->
+    <article class="module-card">
+      <div class="mod-banner quiz">
+        <div class="mod-icon">🏆</div>
+        <div class="mod-badges">
+          <span class="mod-pill">650 Exam Questions</span>
+          <span class="mod-pill">परीक्षा दें और परखें</span>
+        </div>
+      </div>
+      <div class="mod-body">
+        <div class="mod-title">Competency Quiz Arena (4 Modes)</div>
+        <div class="mod-desc">13 अध्याय × 50 प्रश्न (MCQs, True/False, Fill Blanks, Assertion-Reason और Case Study) — वैज्ञानिक व्याख्या, 50-50 लाइफलाइन और CBSE रिपोर्ट कार्ड के साथ!</div>
+        <ul class="mod-highlights">
+          <li>⚡ 60s Rapid Fire</li>
+          <li>📝 20-Q Mock Test</li>
+          <li>🧠 Assertion-Reason & Case</li>
+          <li>🛟 50-50 & 🔁 Retry Wrong</li>
+        </ul>
+      </div>
+      <div class="mod-footer">
+        <a href="https://9thsquiz.vercel.app" target="_blank" rel="noopener noreferrer" class="launch-btn quiz-btn">
+          <span>🏆 क्विज़ एरीना खोलें (New Tab) ➔</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <!-- ================= 15-MINUTE TOPPER FORMULA ================= -->
+  <section class="section-card">
+    <div class="sec-heading">
+      <h2>🚀 रोज़ाना सिर्फ़ 15 मिनट का "टॉपर स्टडी फॉर्मूला"</h2>
+      <span class="sec-sub">दोनों पेजों से 100% लाभ उठाने का सबसे असरदार तरीका</span>
+    </div>
+    <div class="formula-steps">
+      <div class="step-box s1">
+        <span class="step-badge">स्टेप 1 • 5 मिनट</span>
+        <h3>🃏 Flashcards से रिवीजन</h3>
+        <p>अपना अध्याय चुनें, <strong>🔀 Shuffle Cards</strong> दबाएँ और कार्ड पलटकर कॉन्सेप्ट याद करें। कठिन कार्ड्स पर <strong>🔴 Hard</strong> दबाएँ ताकि वे दोबारा आएँ।</p>
+      </div>
+      <div class="step-box s2">
+        <span class="step-badge">स्टेप 2 • 5 मिनट</span>
+        <h3>🎯 Classic और A-R अभ्यास</h3>
+        <p>Quiz Arena में जाकर पहले <strong>Classic Practice</strong> और <strong>🧠 A-R & Case Focus</strong> से CBSE पैटर्न के प्रश्नों की व्याख्या समझें।</p>
+      </div>
+      <div class="step-box s3">
+        <span class="step-badge">स्टेप 3 • 5 मिनट</span>
+        <h3>⚡ Rapid Fire या Mock Test</h3>
+        <p>अंत में <strong>⚡ 60s Rapid Fire</strong> या <strong>📝 20-Q Mock Test</strong> देकर अपना CBSE ग्रेड (A1/A2) देखें और <strong>🔁 Retry Wrong</strong> से गलतियाँ सुधारें।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMPLETE HINDI USER GUIDE ================= -->
+  <section class="section-card">
+    <div class="sec-heading">
+      <h2>📘 छात्र गाइड (हिंदी में): सभी ऑप्शंस और फ़िल्टर्स का सही इस्तेमाल कैसे करें?</h2>
+      <span class="sec-sub">हर बटन आपकी पढ़ाई को आसान और मज़ेदार बनाने के लिए है</span>
+    </div>
+
+    <div class="guide-grid">
+      <!-- Flashcards Guide -->
+      <div class="guide-col fc-guide">
+        <div class="guide-col-title">🃏 1. Smart 3D Flashcards के सभी फीचर्स</div>
+
+        <div class="guide-item">
+          <span class="g-icon">🔀</span>
+          <div><strong>Shuffle Cards & Reset Order:</strong> <span>कार्ड्स का क्रम रैंडम (आगे-पीछे) करने के लिए Shuffle दबाएँ ताकि आप रटें नहीं बल्कि समझकर याद करें।</span></div>
+        </div>
+        <div class="guide-item">
+          <span class="g-icon">🧬</span>
+          <div><strong>विषय व स्मार्ट टैग फ़िल्टर:</strong> <span>ऊपर से Biology, Chemistry, Physics या सीधे <strong>📐 Formulas & SI Units</strong> और <strong>✍️ Fill in the Blanks</strong> छांटकर पढ़ें।</span></div>
+        </div>
+        <div class="guide-item">
+          <span class="g-icon">🔴</span>
+          <div><strong>3-बटन Confidence Rating (Spaced Repetition):</strong> <span><strong>🔴 Hard</strong> दबाने पर कठिन कार्ड 4 कार्ड बाद फिर आएगा और Hard Review Deck में जुड़ जाएगा। <strong>🟡 Good (+5 XP)</strong> और <strong>🟢 Mastered (+10 XP)</strong> से आपका स्कोर व Streak बढ़ेगा।</span></div>
+        </div>
+        <div class="guide-item">
+          <span class="g-icon">💡</span>
+          <div><strong>Clue (हिंट) और 🔊 Listen (ऑडियो):</strong> <span>उत्तर याद न आए तो Clue दबाकर हिंट देखें और Listen दबाकर विज्ञान के कठिन शब्दों का सही अंग्रेज़ी उच्चारण सुनें।</span></div>
+        </div>
+        <div class="guide-item">
+          <span class="g-icon">👆</span>
+          <div><strong>3D Flip और Swipe:</strong> <span>उत्तर देखने के लिए कार्ड पर टैप करें और अगले/पिछले कार्ड के लिए मोबाइल स्क्रीन पर बाएँ-दाएँ स्वाइप करें।</span></div>
+        </div>
+      </div>
+
+      <!-- Quiz Guide -->
+      <div class="guide-col quiz-guide">
+        <div class="guide-col-title">🏆 2. Competency Quiz Arena के सभी फीचर्स</div>
+
+        <div class="guide-item">
+          <span class="g-icon">🎮</span>
+          <div><strong>4 परीक्षा मोड्स (Game Modes):</strong> <span><strong>Classic Practice</strong> (तुरंत व्याख्या), <strong>⚡ 60s Rapid Fire</strong> (स्पीड टेस्ट), <strong>📝 20-Q Mock Test</strong> (20 मिनट का असली टेस्ट व ग्रेड रिपोर्ट) और <strong>🧠 A-R & Case Focus</strong> (CBSE के सबसे ज़रूरी प्रश्न)।</span></div>
+        </div>
+        <div class="guide-item">
+          <span class="g-icon">🔀</span>
+          <div><strong>Shuffle Questions & Options:</strong> <span>यह बटन न केवल प्रश्नों का क्रम बदलता है, बल्कि MCQ के विकल्प (A, B, C, D) भी हर बार बदल देता है!</span></div>
+        </div>
+        <div class="guide-item">
+          <span class="g-icon">📑</span>
+          <div><strong>5 सेक्शन फ़िल्टर (Sec A से E):</strong> <span>आप अलग से MCQs, True/False, Fill Blanks, Assertion-Reason या Case-Study चुनकर अभ्यास कर सकते हैं।</span></div>
+        </div>
+        <div class="guide-item">
+          <span class="g-icon">🛟</span>
+          <div><strong>50-50 लाइफलाइन:</strong> <span>हर अध्याय में आपको 2 बार <strong>50-50 Lifeline</strong> मिलती है, जो कठिन प्रश्न के 2 गलत विकल्प हटा देती है।</span></div>
+        </div>
+        <div class="guide-item">
+          <span class="g-icon">🔁</span>
+          <div><strong>Retry Wrong और WhatsApp Challenge:</strong> <span>गलत हुए प्रश्नों को <strong>🔁 Retry Wrong</strong> से दोबारा हल करें और अपना स्कोर दोस्तों को चैलेंज के रूप में भेजें।</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 13 CHAPTERS SYLLABUS ================= -->
+  <section class="section-card">
+    <button class="syllabus-toggle-btn" onclick="toggleSyllabus()">
+      <span>📚 Exploration पाठ्यपुस्तक के सभी 13 अध्यायों की सूची देखें (Ch 1 – Ch 13)</span>
+      <span id="sylArrow">▼</span>
+    </button>
+
+    <div class="syllabus-content" id="syllabusBox">
+      <div class="branch-box">
+        <h4>🧬 Biology (जीव विज्ञान)</h4>
+        <ul>
+          <li>Ch 2: Cell: The Building Block of Life</li>
+          <li>Ch 3: Tissues in Action</li>
+          <li>Ch 11: Reproduction: How Life Continues</li>
+          <li>Ch 12: Patterns in Life: Diversity and Classification</li>
+        </ul>
+      </div>
+      <div class="branch-box">
+        <h4>🧪 Chemistry (रसायन विज्ञान)</h4>
+        <ul>
+          <li>Ch 5: Exploring Mixtures and their Separation</li>
+          <li>Ch 8: Journey Inside the Atom</li>
+          <li>Ch 9: Atomic Foundations of Matter</li>
+        </ul>
+      </div>
+      <div class="branch-box">
+        <h4>⚡ Physics (भौतिक विज्ञान)</h4>
+        <ul>
+          <li>Ch 4: Describing Motion Around Us</li>
+          <li>Ch 6: How Forces Affect Motion</li>
+          <li>Ch 7: Work, Energy, and Simple Machines</li>
+          <li>Ch 10: Sound Waves: Characteristics and Applications</li>
+        </ul>
+      </div>
+      <div class="branch-box">
+        <h4>🌍 Scientific Inquiry & Earth Science</h4>
+        <ul>
+          <li>Ch 1: Exploration: Entering the World of Secondary Science</li>
+          <li>Ch 13: Earth as a System: Energy, Matter, and Life</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEEDBACK & MOTIVATION SECTION ================= -->
+  <section class="feedback-card">
+    <h2>💌 आपका फीडबैक, ऋषि सर की सबसे बड़ी प्रेरणा!</h2>
+    <p>
+      प्रिय छात्रो और अभिभावको, यह पूरा <strong>GYANU AI</strong> डिजिटल प्लेटफॉर्म आप सभी के लिए <strong>100% निःशुल्क (Free of Cost)</strong> तैयार किया गया है।
+      कृपया नीचे दिए गए बटन से WhatsApp (<strong>9251477188</strong>) पर अपना अनुभव या सुधार का सुझाव ज़रूर भेजें—आपका एक छोटा सा संदेश <strong>ऋषि सर</strong> को हर विषय (Maths, SST, English आदि) में ऐसे ही और शानदार फ्री स्टडी मटेरियल बनाने के लिए प्रेरित करेगा!
+    </p>
+
+    <div class="wa-grid">
+      <a href="https://wa.me/919251477188?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%20%E0%A4%8B%E0%A4%B7%E0%A4%BF%20%E0%A4%B8%E0%A4%B0!%20CBSE%20Class%209%20Science%20%E0%A4%95%E0%A5%87%203D%20Flashcards%20%E0%A4%94%E0%A4%B0%20Quiz%20Arena%20%E0%A4%AC%E0%A4%B9%E0%A5%81%E0%A4%A4%20%E0%A4%B6%E0%A4%BE%E0%A4%A8%E0%A4%A6%E0%A4%BE%E0%A4%B0%20%E0%A4%B9%E0%A5%88%E0%A4%82%E0%A5%A4%20%E0%A4%87%E0%A4%B8%20%E0%A4%AB%E0%A5%8D%E0%A4%B0%E0%A5%80%20%E0%A4%AA%E0%A5%8D%E0%A4%B2%E0%A5%87%E0%A4%9F%E0%A4%AB%E0%A5%89%E0%A4%B0%E0%A5%8D%E0%A4%AE%20%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%8F%20%E0%A4%AC%E0%A4%B9%E0%A5%81%E0%A4%A4-%E0%A4%AC%E0%A4%B9%E0%A5%81%E0%A4%A4%20%E0%A4%A7%E0%A4%A8%E0%A5%8D%E0%A4%AF%E0%A4%B5%E0%A4%BE%E0%A4%A6!" target="_blank" rel="noopener noreferrer" class="wa-action-btn">
+        <span>⭐ बहुत अच्छा लगा!</span>
+        <span class="sub">ऋषि सर को धन्यवाद व हौसला भेजें</span>
+      </a>
+
+      <a href="https://wa.me/919251477188?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%20%E0%A4%8B%E0%A4%B7%E0%A4%BF%20%E0%A4%B8%E0%A4%B0!%20CBSE%20Class%209%20Science%20Hub%20%E0%A4%95%E0%A5%8B%20%E0%A4%94%E0%A4%B0%20%E0%A4%AC%E0%A5%87%E0%A4%B9%E0%A4%A4%E0%A4%B0%20%E0%A4%AC%E0%A4%A8%E0%A4%BE%E0%A4%A8%E0%A5%87%20%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%8F%20%E0%A4%AE%E0%A5%87%E0%A4%B0%E0%A4%BE%20%E0%A4%B8%E0%A5%81%E0%A4%9D%E0%A4%BE%E0%A4%B5%20%E0%A4%B9%E0%A5%88%3A%20" target="_blank" rel="noopener noreferrer" class="wa-action-btn alt1">
+        <span>💡 सुझाव / सुधार बताएं</span>
+        <span class="sub">किसी सुधार या नए फीचर के लिए लिखें</span>
+      </a>
+
+      <a href="https://wa.me/919251477188?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%20%E0%A4%8B%E0%A4%B7%E0%A4%BF%20%E0%A4%B8%E0%A4%B0!%20%E0%A4%95%E0%A5%83%E0%A4%AA%E0%A4%AF%E0%A4%BE%20CBSE%20Class%209%20%E0%A4%95%E0%A5%87%20%E0%A4%85%E0%A4%97%E0%A4%B2%E0%A5%87%20%E0%A4%B5%E0%A4%BF%E0%A4%B7%E0%A4%AF%20(Maths%20%2F%20SST%20%2F%20English)%20%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%8F%20%E0%A4%AD%E0%A5%80%20%E0%A4%90%E0%A4%B8%E0%A4%BE%20%E0%A4%B9%E0%A5%80%20%E0%A4%AB%E0%A5%8D%E0%A4%B0%E0%A5%80%20%E0%A4%AA%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%9F%E0%A4%B2%20%E0%A4%AC%E0%A4%A8%E0%A4%BE%E0%A4%8F%E0%A4%81%E0%A5%A4" target="_blank" rel="noopener noreferrer" class="wa-action-btn alt2">
+        <span>📚 अगला विषय माँगें</span>
+        <span class="sub">Maths / SST / English के लिए रिक्वेस्ट</span>
+      </a>
+    </div>
+
+    <div class="direct-phone">📲 ऋषि सर WhatsApp फीडबैक व सहायता नंबर: 9251477188</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-note">
+    🦉 GYANU AI By Rishi Sir • Designed with ❤️ for CBSE Class 9 Students • Free Quality Education for All
+  </footer>
+</div>
+
+<script>
+  const KEY_DARK = 'gyanu_cbse9_fc_dark_v1';
+  const KEY_NAME = 'gyanu_cbse9_student_name_v1';
+
+  function applyStudentName() {
+    const nm = localStorage.getItem(KEY_NAME);
+    if (nm) {
+      document.getElementById('welcomeHeading').textContent = `स्वागत है, ${nm}! — स्मार्ट तरीके से विज्ञान सीखें और परीक्षा में टॉप करें`;
+      document.getElementById('nameBtnText').textContent = `${nm} (बदलें)`;
+    }
+  }
+
+  function setStudentName() {
+    const cur = localStorage.getItem(KEY_NAME) || '';
+    const val = prompt('अपना नाम लिखें (Enter your first name):', cur);
+    if (val && val.trim()) {
+      try { localStorage.setItem(KEY_NAME, val.trim()); } catch (e) {}
+      applyStudentName();
+    }
+  }
+
+  function toggleSyllabus() {
+    const box = document.getElementById('syllabusBox');
+    const arrow = document.getElementById('sylArrow');
+    const isOpen = box.classList.toggle('open');
+    arrow.textContent = isOpen ? '▲' : '▼';
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    try { localStorage.setItem(KEY_DARK, isDark); } catch (e) {}
+    document.getElementById('themeBtn').innerHTML = isDark ? '☀️ लाइट मोड' : '🌙 नाइट मोड';
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem(KEY_DARK) === 'true') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('themeBtn').innerHTML = '☀️ लाइट मोड';
+    }
+    applyStudentName();
+  });
+</script>
+</body>
+</html>
